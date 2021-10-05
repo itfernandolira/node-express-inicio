@@ -24,9 +24,15 @@ app.get("/ola/:nome/:empresa", function(req, res){
     res.send("<h1>Oi " + nome +  " do " + empresa + " </h1>");
 });
 
-app.get("/canal/youtube",function(req,res){
-    res.send("<h1>Bem vindo ao CANAL de YOUTUBE</h1>");
-});
+app.get("/canal/youtube", function(req, res){
+    var canal = req.query["canal"];
+
+    if(canal){
+        res.send(canal); 
+    }else{
+        res.send("Nenhum canal fornecido!");
+    }
+})
 
 app.listen(4000,function(erro){
     if(erro){
